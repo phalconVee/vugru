@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>VuGru - Project Management Tool for Creators | Dashboard</title>
+    @@include("partials/head.html")
+</head>
+
+<body>
+     <!-- Sidebar navigation -->
+     @@include('partials/sidebarnav.html', { "page": "dashboard", })
+
+    <!-- Main Content -->
+    <div class="main-content">
+        @@include("partials/header.html")
+
+        <!-- Content Area -->
+        <main class="content">
+
+            <!-- Welcome Banner Section -->
+            <div class="welcome-banner mb-4 p-4 rounded-4">
+                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 gap-md-0">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="welcome-avatar flex-shrink-0">
+                            <img src="assets/images/avatar.jpg" alt="Profile" class="rounded-circle">
+                        </div>
+                        <div class="text-white">
+                            <h3 class="welcome-title mb-1">Good afternoon, Tyson Mallet</h3>
+                            <p class="welcome-text mb-0">Here is what's happening with your projects today:</p>
+                        </div>
+                    </div>
+                    <a href="createproject.html" class="btn btn-light rounded-md text-sm align-self-start align-self-md-center">Create New Project</a>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="mb-2">Active Projects</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0">12</h3>
+                            <span class="badge bg-success ms-2">+2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="mb-2">Pending Reviews</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0">5</h3>
+                            <span class="badge bg-warning ms-2">3 urgent</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="mb-2">Monthly Revenue</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0">$8,240</h3>
+                            <span class="badge bg-success ms-2">+12%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="mb-2">Completed Projects</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0">45</h3>
+                            <span class="badge bg-info ms-2">This year</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <h4 class="mb-3">Quick Actions</h4>
+            <div class="row g-4 mb-4">
+                <div class="col-md-4">
+                    <div class="quick-action">
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        <div>
+                            <h6 class="mb-1">Schedule Session</h6>
+                            <p class="text-muted mb-0">Book new photo session</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="quick-action">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <div>
+                            <h6 class="mb-1">Create Invoice</h6>
+                            <p class="text-muted mb-0">Generate new invoice</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="quick-action">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        <div>
+                            <h6 class="mb-1">Share Portfolio</h6>
+                            <p class="text-muted mb-0">Send work samples</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Projects -->
+            <div class="mb-4">
+                <h4 class="mb-3">Recent Projects</h4>
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0">Smith-Jones Wedding</h5>
+                        <span class="project-status status-active">Active</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-muted mb-2">Wedding photography and videography package</p>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <small class="text-muted">
+                                    <i class="fa-regular fa-calendar me-1"></i>
+                                    Due: Dec 15, 2024
+                                </small>
+                                <small class="text-muted">
+                                    <i class="fa-solid fa-list-check me-1"></i>
+                                    8/12 tasks completed
+                                </small>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" 
+                                     aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <button class="btn btn-outline-primary">
+                                <i class="fa-solid fa-eye me-2"></i>View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0">Tech Corp Product Launch</h5>
+                        <span class="project-status status-pending">Pending Review</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-muted mb-2">Corporate event coverage and promotional video</p>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <small class="text-muted">
+                                    <i class="fa-regular fa-calendar me-1"></i>
+                                    Due: Nov 30, 2024
+                                </small>
+                                <small class="text-muted">
+                                    <i class="fa-solid fa-list-check me-1"></i>
+                                    5/10 tasks completed
+                                </small>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" 
+                                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <button class="btn btn-outline-primary">
+                                <i class="fa-solid fa-eye me-2"></i>View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- End Main Content -->
+
+
+    <!-- Scripts -->
+    @@include("partials/scripts.html")
+
+</body>
+</html>

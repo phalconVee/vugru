@@ -1,0 +1,52 @@
+ 
+ <nav class="sidebar">
+    <div class="sidebar-header">
+        <a class="navbar-brand" href="dashboard.html">
+            <img src="assets/images/logo.svg" alt="Vugru">
+        </a>
+    </div>
+    <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+            <a href="../dashboard.html" class="nav-link @@if (context.page === 'dashboard') { active }">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="../projects.html" class="nav-link @@if (context.page === 'projects') { active }">
+                <i class="fa-solid fa-folder-open"></i>
+                Projects
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link @@if (context.page === 'clients') { active }">
+                <i class="fa-solid fa-users"></i>
+                Clients
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link @@if (context.page === 'calendar') { active }">
+                <i class="fa-solid fa-calendar-days"></i>
+                Calendar
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link @@if (context.page === 'invoices') { active }">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                Invoices
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link @@if (context.page === 'messages') { active }">
+                <i class="fa-solid fa-message"></i>
+                Messages
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link @@if (context.page === 'settings') { active }">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+        </li>
+    </ul>
+</nav>

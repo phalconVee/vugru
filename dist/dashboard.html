@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>VuGru - Project Management Tool for Creators | Dashboard</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Updated Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="./assets/css/main.css">
+
+
+</head>
+
+<body>
+     <!-- Sidebar navigation -->
+      
+ <nav class="sidebar">
+    <div class="sidebar-header">
+        <a class="navbar-brand" href="dashboard.html">
+            <img src="assets/images/logo.svg" alt="Vugru">
+        </a>
+    </div>
+    <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+            <a href="../dashboard.html" class="nav-link  active ">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="../projects.html" class="nav-link ">
+                <i class="fa-solid fa-folder-open"></i>
+                Projects
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-users"></i>
+                Clients
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-calendar-days"></i>
+                Calendar
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                Invoices
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-message"></i>
+                Messages
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+        </li>
+    </ul>
+</nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="header">
+    <div class="d-flex justify-content-between align-items-center w-100">
+        <div class="d-flex align-items-center">
+            <button class="btn d-md-none me-2" id="sidebarToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="search-wrapper flex-grow-1 me-4" style="max-width: 400px;">
+                <div class="position-relative">
+                    <input type="text" class="form-control search-input" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-flex align-items-center gap-4">
+            <div class="d-flex align-items-center gap-3">
+                <div class="notifications-badge">
+                    <button class="btn">
+                        <i class="fa-regular fa-bell fa-lg"></i>
+                    </button>
+                </div>
+                <div class="vr d-none d-sm-block" style="height: 24px; opacity: 0.15;"></div>
+            </div>
+            
+            <div class="user-profile" data-bs-toggle="dropdown">
+                <img src="assets/images/avatar.jpg" class="user-avatar" alt="User">
+                <div class="d-none d-sm-block">
+                    <h6 class="mb-0">Tyson Mallet</h6>
+                    <small class="text-muted">Photographer</small>
+                </div>
+                <i class="fa-solid fa-chevron-down ms-2 text-muted"></i>
+            </div>
+            <!-- Dropdown Menu -->
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#"><i class="fa-regular fa-user me-2"></i>Profile</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-regular fa-envelope me-2"></i>Messages</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear me-2"></i>Settingss</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="../index.html"><i class="fa-solid fa-right-from-bracket me-2"></i>Sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+        <!-- Content Area -->
+        <main class="content">
+
+            <!-- Welcome Banner Section -->
+            <div class="welcome-banner mb-4 p-4 rounded-4">
+                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 gap-md-0">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="welcome-avatar flex-shrink-0">
+                            <img src="assets/images/avatar.jpg" alt="Profile" class="rounded-circle">
+                        </div>
+                        <div class="text-white">
+                            <h3 class="welcome-title mb-1">Good afternoon, Tyson Mallet</h3>
+                            <p class="welcome-text mb-0">Here is what's happening with your projects today:</p>
+                        </div>
+                    </div>
+                    <a href="createproject.html" class="btn btn-light rounded-md text-sm align-self-start align-self-md-center">Create New Project</a>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="mb-2">Active Projects</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0">12</h3>
+                            <span class="badge bg-success ms-2">+2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="mb-2">Pending Reviews</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0">5</h3>
+                            <span class="badge bg-warning ms-2">3 urgent</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="mb-2">Monthly Revenue</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0">$8,240</h3>
+                            <span class="badge bg-success ms-2">+12%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <h6 class="mb-2">Completed Projects</h6>
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0">45</h3>
+                            <span class="badge bg-info ms-2">This year</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <h4 class="mb-3">Quick Actions</h4>
+            <div class="row g-4 mb-4">
+                <div class="col-md-4">
+                    <div class="quick-action">
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        <div>
+                            <h6 class="mb-1">Schedule Session</h6>
+                            <p class="text-muted mb-0">Book new photo session</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="quick-action">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <div>
+                            <h6 class="mb-1">Create Invoice</h6>
+                            <p class="text-muted mb-0">Generate new invoice</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="quick-action">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        <div>
+                            <h6 class="mb-1">Share Portfolio</h6>
+                            <p class="text-muted mb-0">Send work samples</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Projects -->
+            <div class="mb-4">
+                <h4 class="mb-3">Recent Projects</h4>
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0">Smith-Jones Wedding</h5>
+                        <span class="project-status status-active">Active</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-muted mb-2">Wedding photography and videography package</p>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <small class="text-muted">
+                                    <i class="fa-regular fa-calendar me-1"></i>
+                                    Due: Dec 15, 2024
+                                </small>
+                                <small class="text-muted">
+                                    <i class="fa-solid fa-list-check me-1"></i>
+                                    8/12 tasks completed
+                                </small>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" 
+                                     aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <button class="btn btn-outline-primary">
+                                <i class="fa-solid fa-eye me-2"></i>View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0">Tech Corp Product Launch</h5>
+                        <span class="project-status status-pending">Pending Review</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-muted mb-2">Corporate event coverage and promotional video</p>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <small class="text-muted">
+                                    <i class="fa-regular fa-calendar me-1"></i>
+                                    Due: Nov 30, 2024
+                                </small>
+                                <small class="text-muted">
+                                    <i class="fa-solid fa-list-check me-1"></i>
+                                    5/10 tasks completed
+                                </small>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" 
+                                     aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <button class="btn btn-outline-primary">
+                                <i class="fa-solid fa-eye me-2"></i>View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- End Main Content -->
+
+
+    <!-- Scripts -->
+    <!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile sidebar toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+        
+        sidebarToggle?.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+
+        // Handle navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

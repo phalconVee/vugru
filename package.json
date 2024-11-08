@@ -1,0 +1,19 @@
+{
+  "name": "vugru",
+  "version": "1.0.0",
+  "description": "VuGru is a project management tool for creators",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-file-include": "^2.3.0"
+  },
+  "dependencies": {
+    "browser-sync": "^3.0.3"
+  }
+}

@@ -1,0 +1,334 @@
+:root {
+    --sidebar-width: 280px;
+    --header-height: 60px;
+    --primary-color: #41B5FF;
+    --sidebar-bg: #28282B;
+    --text-primary: #2D3748;
+    --text-secondary: #718096;
+}
+
+.bg-creative {
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+}
+
+.form-floating > label {
+    color: #6B7280;
+}
+
+.project-type-fields {
+    transition: all 0.3s ease;
+}
+
+.custom-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px;
+    background: #374151;
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+    padding: 0 40px;
+}
+
+.progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: #E5E7EB;
+    z-index: 0;
+}
+
+.progress-line {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    height: 2px;
+    background: #6366F1;
+    transition: width 0.3s ease;
+    z-index: 0;
+}
+
+.step {
+    position: relative;
+    z-index: 1;
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #E5E7EB;
+    transition: all 0.3s ease;
+}
+
+.step.active {
+    border-color: #6366F1;
+    background: #6366F1;
+    color: white;
+}
+
+.step.completed {
+    border-color: #10B981;
+    background: #10B981;
+    color: white;
+}
+
+.step-label {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    color: #6B7280;
+}
+
+.form-section {
+    display: none;
+}
+
+.form-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/***** projects.css styles *******/
+
+/* Table Styles */
+.table-container {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table > :not(caption) > * > * {
+    padding: 1rem 1.5rem;
+    vertical-align: middle;
+}
+
+.table thead th {
+    background: #f8fafc;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.project-row {
+    transition: all 0.2s ease;
+}
+
+.project-row:hover {
+    background-color: #f8fafc;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.35rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-active {
+    background: rgba(65, 181, 255, 0.1);
+    color: var(--primary-color);
+}
+
+.status-completed {
+    background: #DEF7EC;
+    color: #03543F;
+}
+
+.status-delayed {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+/* Progress Bar */
+.progress {
+    height: 6px;
+    width: 100px;
+    border-radius: 3px;
+    background-color: #E2E8F0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+/* Action Buttons */
+.action-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: 1px solid #E2E8F0;
+    background: white;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background: #f8fafc;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Modal Styles */
+.modal-header {
+    border-bottom: 1px solid #E2E8F0;
+    padding: 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #E2E8F0;
+    padding: 1.5rem;
+}
+
+.project-detail-card {
+    background: #f8fafc;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-detail-card h6 {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-detail-card p {
+    margin-bottom: 0;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* Search and Filter Styles */
+.search-input {
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    padding-left: 2.5rem;
+    border: 1px solid #E2E8F0;
+    transition: all 0.2s ease;
+}
+
+.search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(65, 181, 255, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.filter-select {
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #E2E8F0;
+    transition: all 0.2s ease;
+}
+
+.filter-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(65, 181, 255, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .table > :not(caption) > * > * {
+        padding: 0.75rem;
+    }
+    
+    .action-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .status-badge {
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* Loading State */
+.loading-spinner {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.table-container.loading .loading-spinner {
+    display: flex;
+}
+
+.table-container.loading .table {
+    opacity: 0.5;
+}
+
+/* Toast Notification */
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1060;
+}
+
+.custom-toast {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>VuGru - Project Management Tool for Creators | Projects</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Updated Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="./assets/css/main.css">
+
+
+</head>
+
+<body>
+    <!-- Sidebar navigation -->
+     
+ <nav class="sidebar">
+    <div class="sidebar-header">
+        <a class="navbar-brand" href="dashboard.html">
+            <img src="assets/images/logo.svg" alt="Vugru">
+        </a>
+    </div>
+    <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+            <a href="../dashboard.html" class="nav-link ">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="../projects.html" class="nav-link  active ">
+                <i class="fa-solid fa-folder-open"></i>
+                Projects
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-users"></i>
+                Clients
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-calendar-days"></i>
+                Calendar
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                Invoices
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-message"></i>
+                Messages
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+        </li>
+    </ul>
+</nav>
+
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="header">
+    <div class="d-flex justify-content-between align-items-center w-100">
+        <div class="d-flex align-items-center">
+            <button class="btn d-md-none me-2" id="sidebarToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="search-wrapper flex-grow-1 me-4" style="max-width: 400px;">
+                <div class="position-relative">
+                    <input type="text" class="form-control search-input" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-flex align-items-center gap-4">
+            <div class="d-flex align-items-center gap-3">
+                <div class="notifications-badge">
+                    <button class="btn">
+                        <i class="fa-regular fa-bell fa-lg"></i>
+                    </button>
+                </div>
+                <div class="vr d-none d-sm-block" style="height: 24px; opacity: 0.15;"></div>
+            </div>
+            
+            <div class="user-profile" data-bs-toggle="dropdown">
+                <img src="assets/images/avatar.jpg" class="user-avatar" alt="User">
+                <div class="d-none d-sm-block">
+                    <h6 class="mb-0">Tyson Mallet</h6>
+                    <small class="text-muted">Photographer</small>
+                </div>
+                <i class="fa-solid fa-chevron-down ms-2 text-muted"></i>
+            </div>
+            <!-- Dropdown Menu -->
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#"><i class="fa-regular fa-user me-2"></i>Profile</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-regular fa-envelope me-2"></i>Messages</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear me-2"></i>Settingss</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="../index.html"><i class="fa-solid fa-right-from-bracket me-2"></i>Sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+        <!-- Content Area -->
+        <main class="content">
+
+            <div class="container-fluid py-4">
+                <!-- Header Section -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2 class="mb-1">Projects</h2>
+                        <p class="text-muted mb-0">Manage and track your projects</p>
+                    </div>
+                    <a href="createproject.html" class="btn btn-primary rounded-md text-sm align-self-start align-self-md-center"><i class="fa-solid fa-plus me-2"></i> New Project</a>
+                </div>
+        
+                <!-- Search and Filter Section -->
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <div class="position-relative">
+                            <i class="fa-solid fa-search search-icon"></i>
+                            <input type="text" class="form-control search-input" id="searchInput" placeholder="Search projects...">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select filter-select" id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="completed">Completed</option>
+                            <option value="delayed">Delayed</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select filter-select" id="sortFilter">
+                            <option value="">Sort by</option>
+                            <option value="date">Start Date</option>
+                            <option value="price">Price</option>
+                            <option value="progress">Progress</option>
+                        </select>
+                    </div>
+                </div> 
+        
+                <!-- Projects Table -->
+                <div class="table-container position-relative">
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Client</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Start Date</th>
+                                    <th>Due Date</th>
+                                    <th>Progress</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projectsTableBody">
+                                <!-- Table content will be dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <!-- Project Details Modal -->
+                <div class="modal fade" id="projectDetailsModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Project Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body" id="projectDetailsContent">
+                                <!-- Modal content will be dynamically populated -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="editProjectBtn">Edit Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Toast Container -->
+                <div class="toast-container"></div>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile sidebar toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+        
+        sidebarToggle?.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+
+        // Handle navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    });
+</script>
+    <script src="assets/js/project.js"></script>
+</body>
+</html>

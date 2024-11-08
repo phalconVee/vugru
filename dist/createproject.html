@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>VuGru - Project Management Tool for Creators | Projects</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Updated Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="./assets/css/main.css">
+
+
+    <link rel="stylesheet" href="assets/css/projects.css">
+</head>
+
+<body>
+     <!-- Sidebar navigation -->
+      
+ <nav class="sidebar">
+    <div class="sidebar-header">
+        <a class="navbar-brand" href="dashboard.html">
+            <img src="assets/images/logo.svg" alt="Vugru">
+        </a>
+    </div>
+    <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+            <a href="../dashboard.html" class="nav-link ">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="../projects.html" class="nav-link  active ">
+                <i class="fa-solid fa-folder-open"></i>
+                Projects
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-users"></i>
+                Clients
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-calendar-days"></i>
+                Calendar
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                Invoices
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-message"></i>
+                Messages
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link ">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+        </li>
+    </ul>
+</nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="header">
+    <div class="d-flex justify-content-between align-items-center w-100">
+        <div class="d-flex align-items-center">
+            <button class="btn d-md-none me-2" id="sidebarToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="search-wrapper flex-grow-1 me-4" style="max-width: 400px;">
+                <div class="position-relative">
+                    <input type="text" class="form-control search-input" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-flex align-items-center gap-4">
+            <div class="d-flex align-items-center gap-3">
+                <div class="notifications-badge">
+                    <button class="btn">
+                        <i class="fa-regular fa-bell fa-lg"></i>
+                    </button>
+                </div>
+                <div class="vr d-none d-sm-block" style="height: 24px; opacity: 0.15;"></div>
+            </div>
+            
+            <div class="user-profile" data-bs-toggle="dropdown">
+                <img src="assets/images/avatar.jpg" class="user-avatar" alt="User">
+                <div class="d-none d-sm-block">
+                    <h6 class="mb-0">Tyson Mallet</h6>
+                    <small class="text-muted">Photographer</small>
+                </div>
+                <i class="fa-solid fa-chevron-down ms-2 text-muted"></i>
+            </div>
+            <!-- Dropdown Menu -->
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#"><i class="fa-regular fa-user me-2"></i>Profile</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-regular fa-envelope me-2"></i>Messages</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear me-2"></i>Settingss</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="../index.html"><i class="fa-solid fa-right-from-bracket me-2"></i>Sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+        <!-- Content Area -->
+        <main class="content">
+
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card shadow-sm animate__animated animate__fadeIn">
+                            <div class="card-body p-4">
+                                <!-- Progress Steps -->
+                                <div class="progress-steps">
+                                    <div class="progress-line"></div>
+                                    <div class="step active" data-step="1">
+                                        1
+                                        <span class="step-label">Basic Info</span>
+                                    </div>
+                                    <div class="step" data-step="2">
+                                        2
+                                        <span class="step-label">Project Details</span>
+                                    </div>
+                                    <div class="step" data-step="3">
+                                        3
+                                        <span class="step-label">Client Setup</span>
+                                    </div>
+                                </div>
+        
+                                <form id="projectSetupForm" novalidate>
+                                    <!-- Step 1: Basic Information -->
+                                    <div class="form-section active" data-step="1">
+                                        <h3 class="mb-4">Basic Project Information</h3>
+                                        <div class="mb-4">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="projectName" placeholder="Project Name" required>
+                                                <label for="projectName">Project Name</label>
+                                                <div class="invalid-feedback">Please enter a project name</div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="clientName" placeholder="Client Name">
+                                                    <label for="clientName">Client Name (Optional)</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input type="date" class="form-control" id="startDate" required>
+                                                    <label for="startDate">Expected Start Date</label>
+                                                    <div class="invalid-feedback">Please select a valid date</div>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="mb-4">
+                                            <div class="form-floating">
+                                                <select class="form-control" id="projectType" required>
+                                                    <option value="">Select a project type</option>
+                                                    <option value="wedding">Wedding Video/Photo</option>
+                                                    <option value="corporate">Corporate Video</option>
+                                                    <option value="event">Event Coverage</option>
+                                                    <option value="portrait">Portrait Session</option>
+                                                </select>
+                                                <label for="projectType">Project Type</label>
+                                                <div class="invalid-feedback">Please select a project type</div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <!-- Step 2: Project Details -->
+                                    <div class="form-section" data-step="2">
+                                        <!-- Dynamic fields will be inserted here based on project type -->
+                                    </div>
+        
+                                    <!-- Step 3: Client Setup -->
+                                    <div class="form-section" data-step="3">
+                                        <h3 class="mb-4">Client Setup</h3>
+                                        <div class="mb-4">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="inviteClient">
+                                                <label class="form-check-label" for="inviteClient">
+                                                    Invite Client Now
+                                                </label>
+                                            </div>
+                                        </div>
+        
+                                        <div id="clientEmailSection" class="d-none">
+                                            <div class="mb-4">
+                                                <div class="form-floating">
+                                                    <input type="email" class="form-control" id="clientEmail" placeholder="Client Email">
+                                                    <label for="clientEmail">Client Email</label>
+                                                    <div class="invalid-feedback">Please enter a valid email address</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <!-- Navigation Buttons -->
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">Previous</button>
+                                        <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+                                        <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">Create Project</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <!-- End Main Content -->
+
+
+    <!-- Scripts -->
+    <!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile sidebar toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+        
+        sidebarToggle?.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.remove('show');
+                }
+            }
+        });
+
+        // Handle navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    });
+</script>
+    <script src="assets/js/createproject.js"></script>
+
+</body>
+</html>
