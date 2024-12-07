@@ -1,161 +1,158 @@
+// Project Data Structure
+let projectsData = {
+    projects: []
+};
+
+// Function to save project data
+function saveProjectData(projectData) {
+    // Get existing data from localStorage or initialize empty array
+    const existingData = JSON.parse(localStorage.getItem('projectsData')) || { projects: [] };
+    
+    // Generate unique ID for the project
+    projectData.id = Date.now().toString();
+    projectData.createdAt = new Date().toISOString();
+    
+    // Add new project
+    existingData.projects.push(projectData);
+    
+    // Save back to localStorage
+    localStorage.setItem('projectsData', JSON.stringify(existingData));
+    
+    return projectData;
+}
+
+// Show toast notification
+function showToast(message, type = "success", duration = 5000) {
+    const toastContainer = document.querySelector(".toast-container")
+    const toastHtml = `
+        <div class="toast ${type}" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">
+                    ${
+                      type === "success"
+                        ? '<i class="fas fa-check-circle me-2"></i>Success'
+                        : '<i class="fas fa-exclamation-circle me-2"></i>Error'
+                    }
+                </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                ${message}
+            </div>
+        </div>
+    `
+    toastContainer.insertAdjacentHTML("beforeend", toastHtml)
+
+    const toastElement = toastContainer.lastElementChild
+    const toast = new bootstrap.Toast(toastElement, {
+      autohide: true,
+      delay: duration,
+    })
+
+    toast.show()
+
+    // Remove toast after it's hidden
+    toastElement.addEventListener("hidden.bs.toast", () => {
+      toastElement.remove()
+    })
+}
+
+
+// Updated form submission handler
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('projectSetupForm');
-    const sections = document.querySelectorAll('.form-section');
-    const steps = document.querySelectorAll('.step');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const submitBtn = document.getElementById('submitBtn');
-    const progressLine = document.querySelector('.progress-line');
-    let currentStep = 1;
+    const form = document.getElementById('createProjectForm');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const spinner = submitButton.querySelector('.spinner-border');
 
-    // Dynamic form templates
-    const projectTypeFields = {
-        wedding: `
-            <h3 class="mb-4">Wedding Details</h3>
-            <div class="mb-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="ceremonyLocation" placeholder="Ceremony Location" required>
-                    <label for="ceremonyLocation">Ceremony Location</label>
-                </div>
-            </div>
-            <div class="mb-4">
-                <div class="form-floating">
-                    <textarea class="form-control" id="keyMoments" style="height: 100px" placeholder="Key Moments"></textarea>
-                    <label for="keyMoments">Key Moments to Capture</label>
-                </div>
-            </div>
-        `,
-        corporate: `
-            <h3 class="mb-4">Corporate Video Details</h3>
-            <div class="mb-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="companyName" placeholder="Company Name" required>
-                    <label for="companyName">Company Name</label>
-                </div>
-            </div>
-            <div class="mb-4">
-                <div class="form-floating">
-                    <select class="form-control" id="videoType" required>
-                        <option value="">Select video type</option>
-                        <option value="promotional">Promotional</option>
-                        <option value="training">Training</option>
-                        <option value="product">Product Demo</option>
-                    </select>
-                    <label for="videoType">Video Type</label>
-                </div>
-            </div>
-        `
-    };
+    // Set minimum date for date inputs
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('startDate').min = today;
+    document.getElementById('dueDate').min = today;
 
-    // Update progress line
-    function updateProgressLine() {
-        const progress = ((currentStep - 1) / (steps.length - 1)) * 100;
-        progressLine.style.width = `${progress}%`;
-    }
 
-    // Validate current section
-    function validateSection(section) {
-        let isValid = true;
-        const inputs = section.querySelectorAll('input[required], select[required], textarea[required]');
+    // Form submission
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
         
-        inputs.forEach(input => {
-            if (!input.value) {
-                isValid = false;
-                input.classList.add('is-invalid');
-            } else {
-                input.classList.remove('is-invalid');
-            }
-        });
-
-        return isValid;
-    }
-
-    // Handle next button click
-    nextBtn.addEventListener('click', () => {
-        const currentSection = document.querySelector(`.form-section[data-step="${currentStep}"]`);
-        
-        if (!validateSection(currentSection)) {
+        if (!form.checkValidity()) {
+            e.stopPropagation();
+            form.classList.add('was-validated');
             return;
         }
 
-        if (currentStep === 1) {
-            // Load dynamic fields based on project type
-            const projectType = document.getElementById('projectType').value;
-            const detailsSection = document.querySelector('.form-section[data-step="2"]');
-            detailsSection.innerHTML = projectTypeFields[projectType] || '<h3 class="mb-4">Project Details</h3>';
-        }
+        try {
+            // Show loading state
+            submitButton.disabled = true;
+            spinner.classList.remove('d-none');
 
-        currentSection.classList.remove('active');
-        steps[currentStep - 1].classList.add('completed');
-        currentStep++;
-        
-        if (currentStep > 1) {
-            prevBtn.style.display = 'block';
-        }
-        
-        if (currentStep === 3) {
-            nextBtn.style.display = 'none';
-            submitBtn.style.display = 'block';
-        }
+            // Collect form data
+            const projectData = {
+                projectName: document.getElementById('projectName').value,
+                projectType: document.getElementById('projectType').value,
+                description: document.getElementById('description').value,
+                clientInfo: {
+                    name: document.getElementById('clientName').value,
+                    email: document.getElementById('clientEmail').value,
+                    phone: document.getElementById('clientPhone').value
+                },
+                location: document.getElementById('location').value,
+                dates: {
+                    start: document.getElementById('startDate').value,
+                    due: document.getElementById('dueDate').value
+                },
+                price: parseFloat(document.getElementById('price').value),
+                status: document.getElementById('status').value,
+                progress: 0 // Initial progress
+            };
 
-        document.querySelector(`.form-section[data-step="${currentStep}"]`).classList.add('active');
-        steps[currentStep - 1].classList.add('active');
-        updateProgressLine();
-    });
+            // Save project data
+            saveProjectData(projectData);
 
-    // Handle previous button click
-    prevBtn.addEventListener('click', () => {
-        document.querySelector(`.form-section[data-step="${currentStep}"]`).classList.remove('active');
-        steps[currentStep - 1].classList.remove('active');
-        currentStep--;
-        
-        if (currentStep === 1) {
-            prevBtn.style.display = 'none';
-        }
-        
-        if (currentStep < 3) {
-            nextBtn.style.display = 'block';
-            submitBtn.style.display = 'none';
-        }
-
-        document.querySelector(`.form-section[data-step="${currentStep}"]`).classList.add('active');
-        steps[currentStep - 1].classList.remove('completed');
-        updateProgressLine();
-    });
-
-    // Handle client invitation toggle
-    document.getElementById('inviteClient').addEventListener('change', function() {
-        const emailSection = document.getElementById('clientEmailSection');
-        emailSection.classList.toggle('d-none', !this.checked);
-        
-        const emailInput = document.getElementById('clientEmail');
-        emailInput.required = this.checked;
-    });
-
-    // Handle form submission
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (validateSection(document.querySelector('.form-section[data-step="3"]'))) {
             // Show success message
-            const alert = document.createElement('div');
-            alert.className = 'alert alert-success mt-3 animate__animated animate__fadeIn';
-            alert.textContent = 'Project created successfully! Redirecting to project overview...';
+            showToast('Project created successfully!', 'success');
 
-            if (document.getElementById('clientEmail') !== '') {
-                alert.textContent = 'Project created successfully! Email has been sent to the client with the project details for collaboration or updates';
-            }
+            // Reset form
+            form.reset();
+            form.classList.remove('was-validated');
 
-            form.appendChild(alert);
+            // Redirect after delay
+            setTimeout(() => {
+                window.location.href = `/projects.html`;
+            }, 1500);
 
-            // // Simulate redirect
-            // setTimeout(() => {
-            //     alert.textContent = 'Redirecting...';
-            // }, 2000);
+        } catch (error) {
+            console.error('Error creating project:', error);
+            showToast('Error creating project. Please try again.', 'error');
+        } finally {
+            submitButton.disabled = false;
+            spinner.classList.add('d-none');
         }
     });
 
-    // Set minimum date for start date
-    const startDateInput = document.getElementById('startDate');
-    const today = new Date().toISOString().split('T')[0];
-    startDateInput.min = today;
+
+    // Date validation
+    document.getElementById('dueDate').addEventListener('change', function() {
+        const startDate = document.getElementById('startDate').value;
+        if (startDate && this.value < startDate) {
+            this.value = startDate;
+            showToast('Due date cannot be earlier than start date', 'error');
+        }
+    });
+
+    // Price input validation
+    document.getElementById('price').addEventListener('input', function() {
+        if (this.value < 0) this.value = 0;
+    });
 });
+
+// Function to get all projects
+// function getAllProjects() {
+//     const data = localStorage.getItem('projectsData');
+//     return data ? JSON.parse(data).projects : [];
+// }
+
+// // Function to get a single project by ID
+// function getProjectById(projectId) {
+//     const projects = getAllProjects();
+//     return projects.find(project => project.id === projectId);
+// }

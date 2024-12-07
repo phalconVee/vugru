@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonText.textContent = 'Signing in...';
 
         try {
-            const BASE_URL = 'http://localhost:3000';
 
             await mockAuthenticate(email, password);
             // Simulate redirect

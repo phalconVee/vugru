@@ -18,111 +18,143 @@
         <!-- Content Area -->
         <main class="content">
 
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="card shadow-sm animate__animated animate__fadeIn">
-                            <div class="card-body p-4">
-                                <!-- Progress Steps -->
-                                <div class="progress-steps">
-                                    <div class="progress-line"></div>
-                                    <div class="step active" data-step="1">
-                                        1
-                                        <span class="step-label">Basic Info</span>
-                                    </div>
-                                    <div class="step" data-step="2">
-                                        2
-                                        <span class="step-label">Project Details</span>
-                                    </div>
-                                    <div class="step" data-step="3">
-                                        3
-                                        <span class="step-label">Client Setup</span>
-                                    </div>
-                                </div>
-        
-                                <form id="projectSetupForm" novalidate>
-                                    <!-- Step 1: Basic Information -->
-                                    <div class="form-section active" data-step="1">
-                                        <h3 class="mb-4">Basic Project Information</h3>
-                                        <div class="mb-4">
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="projectName" placeholder="Project Name" required>
-                                                <label for="projectName">Project Name</label>
-                                                <div class="invalid-feedback">Please enter a project name</div>
-                                            </div>
-                                        </div>
-        
-                                        <div class="row mb-4">
-                                            <div class="col-md-6">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control" id="clientName" placeholder="Client Name">
-                                                    <label for="clientName">Client Name (Optional)</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-floating">
-                                                    <input type="date" class="form-control" id="startDate" required>
-                                                    <label for="startDate">Expected Start Date</label>
-                                                    <div class="invalid-feedback">Please select a valid date</div>
-                                                </div>
-                                            </div>
-                                        </div>
-        
-                                        <div class="mb-4">
-                                            <div class="form-floating">
-                                                <select class="form-control" id="projectType" required>
-                                                    <option value="">Select a project type</option>
-                                                    <option value="wedding">Wedding Video/Photo</option>
-                                                    <option value="corporate">Corporate Video</option>
-                                                    <option value="event">Event Coverage</option>
-                                                    <option value="portrait">Portrait Session</option>
-                                                </select>
-                                                <label for="projectType">Project Type</label>
-                                                <div class="invalid-feedback">Please select a project type</div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <!-- Step 2: Project Details -->
-                                    <div class="form-section" data-step="2">
-                                        <!-- Dynamic fields will be inserted here based on project type -->
-                                    </div>
-        
-                                    <!-- Step 3: Client Setup -->
-                                    <div class="form-section" data-step="3">
-                                        <h3 class="mb-4">Client Setup</h3>
-                                        <div class="mb-4">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="inviteClient">
-                                                <label class="form-check-label" for="inviteClient">
-                                                    Invite Client Now
-                                                </label>
-                                            </div>
-                                        </div>
-        
-                                        <div id="clientEmailSection" class="d-none">
-                                            <div class="mb-4">
-                                                <div class="form-floating">
-                                                    <input type="email" class="form-control" id="clientEmail" placeholder="Client Email">
-                                                    <label for="clientEmail">Client Email</label>
-                                                    <div class="invalid-feedback">Please enter a valid email address</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <!-- Navigation Buttons -->
-                                    <div class="d-flex justify-content-between mt-4">
-                                        <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">Previous</button>
-                                        <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
-                                        <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">Create Project</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+            <div class="container-fluid py-4">
+
+                 <!-- Header Section -->
+                 <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2 class="mb-1">Create Project</h2>
+                        <p class="text-muted mb-0">Create new project to track</p>
                     </div>
+                    <a href="createproject.html" class="btn btn-primary rounded-md text-sm align-self-start align-self-md-center"><i class="fa-solid fa-plus me-2"></i> New Project</a>
                 </div>
-            </div>
+
+                <div class="form-container">
+                  <form id="createProjectForm" novalidate>
+                    <!-- Basic Information -->
+                    <div class="section-title">Basic Information</div>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label" for="projectName">Project Name*</label>
+                        <input type="text" class="form-control" id="projectName" required />
+                        <div class="invalid-feedback">Please enter a project name</div>
+                      </div>
+            
+                      <div class="col-md-6">
+                        <label class="form-label" for="projectType">Project Type*</label>
+                        <select class="form-select" id="projectType" required>
+                          <option value="">Select type</option>
+                          <option value="image">Image</option>
+                          <option value="video">Video</option>
+                          <option value="all">All</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a project type</div>
+                      </div>
+            
+                      <div class="col-12">
+                        <label class="form-label" for="description"
+                          >Project Description</label
+                        >
+                        <textarea class="form-control" id="description" rows="3"></textarea>
+                      </div>
+                    </div>
+            
+                    <!-- Client Information -->
+                    <div class="section-title mt-4">Client Information</div>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label" for="clientName">Client Name*</label>
+                        <input type="text" class="form-control" id="clientName" required />
+                        <div class="invalid-feedback">Please enter client name</div>
+                      </div>
+            
+                      <div class="col-md-6">
+                        <label class="form-label" for="clientEmail">Client Email*</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="clientEmail"
+                          required
+                        />
+                        <div class="invalid-feedback">Please enter a valid email</div>
+                      </div>
+            
+                      <div class="col-md-6">
+                        <label class="form-label" for="clientPhone">Phone Number</label>
+                        <input type="tel" class="form-control" id="clientPhone" />
+                      </div>
+            
+                      <div class="col-md-6">
+                        <label class="form-label" for="location">Location</label>
+                        <input type="text" class="form-control" id="location" />
+                      </div>
+                    </div>
+            
+                    <!-- Project Details -->
+                    <div class="section-title mt-4">Project Details</div>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label" for="startDate">Start Date*</label>
+                        <input type="date" class="form-control" id="startDate" required />
+                        <div class="invalid-feedback">Please select a start date</div>
+                      </div>
+            
+                      <div class="col-md-6">
+                        <label class="form-label" for="dueDate">Due Date*</label>
+                        <input type="date" class="form-control" id="dueDate" required />
+                        <div class="invalid-feedback">Please select a due date</div>
+                      </div>
+            
+                      <div class="col-md-6">
+                        <label class="form-label" for="price">Project Price*</label>
+                        <div class="price-input">
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="price"
+                            min="0"
+                            step="0.01"
+                            required
+                          />
+                        </div>
+                        <div class="invalid-feedback">Please enter a valid price</div>
+                      </div>
+            
+                      <div class="col-md-6">
+                        <label class="form-label" for="status">Project Status</label>
+                        <select class="form-select" id="status">
+                          <option value="active">Active</option>
+                          <option value="pending">Pending</option>
+                          <option value="completed">Completed</option>
+                        </select>
+                      </div>
+            
+                     
+                    </div>
+            
+                    <div class="d-flex justify-content-between mt-4">
+                      <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        onclick="window.history.back()"
+                      >
+                        Cancel
+                      </button>
+                      <button type="submit" class="btn btn-primary">
+                        <span
+                          class="spinner-border spinner-border-sm d-none me-2"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                        Create Project
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            
+              <!-- Toast Container -->
+              <div class="toast-container"></div>
 
         </main>
     </div>
